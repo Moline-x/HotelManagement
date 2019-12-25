@@ -17,5 +17,7 @@ public interface EmpService {
 	Emp login(String account,String password);
 
 	List<Emp> selectAllEmp();
+
+	int addEmp(Emp e);
 	
 }

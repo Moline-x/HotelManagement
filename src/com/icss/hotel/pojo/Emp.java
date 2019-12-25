@@ -6,7 +6,7 @@ package com.icss.hotel.pojo;
  */
 public class Emp {
 	//员工编号
-	private Integer eno;
+	private Integer empno;
 	//员工姓名
 	private String ename;
 	//性别
@@ -28,10 +28,10 @@ public class Emp {
 		super();
 	}
 
-	public Emp(Integer eno, String ename, String gender, String birth, String password, String account, String phone,
+	public Emp(Integer empno, String ename, String gender, String birth, String password, String account, String phone,
 			Integer state, Integer roleid) {
 		super();
-		this.eno = eno;
+		this.empno = empno;
 		this.ename = ename;
 		this.gender = gender;
 		this.birth = birth;
@@ -42,12 +42,12 @@ public class Emp {
 		this.roleid = roleid;
 	}
 
-	public Integer getEno() {
-		return eno;
+	public Integer getEmpno() {
+		return empno;
 	}
 
-	public void setEno(Integer eno) {
-		this.eno = eno;
+	public void setEno(Integer empno) {
+		this.empno = empno;
 	}
 
 	public String getEname() {
@@ -116,7 +116,7 @@ public class Emp {
 
 	@Override
 	public String toString() {
-		return "Emp [eno=" + eno + ", ename=" + ename + ", gender=" + gender + ", birth=" + birth + ", password="
+		return "Emp [empno=" + empno + ", ename=" + ename + ", gender=" + gender + ", birth=" + birth + ", password="
 				+ password + ", account=" + account + ", phone=" + phone + ", state=" + state + ", roleid=" + roleid
 				+ "]";
 	}

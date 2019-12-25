@@ -51,5 +51,17 @@ public class EmpController {
 		List<Emp> list = service.selectAllEmp();
 		return list;
 	}
+	
+	//增加员工信息
+	@RequestMapping("/addEmp")
+	@ResponseBody
+	public Object addEmp(Emp e) {
+		int i = service.addEmp(e);
+		if(i>0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
 
 }

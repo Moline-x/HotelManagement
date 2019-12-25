@@ -99,17 +99,13 @@
 </body>
 <script>
     function login(){
-    	alert("账户" + $("#account").val());
-    	alert("密码" + $("#password").val());
-    	
     	$.ajax({
     		type:"post",
     		url:"login",
     		data:{"account":$("#account").val(),"password":$("#password").val()},
     		dataType:"json",             //响应数据类型  text(String)/ json(Object)
     		success:function(data){
-    			alert(data);
-    			alert(data.emp.ename);
+    			console.log(data);
     			if(data.state == "success"){
     				sessionStorage.setItem("roleid",data.emp.roleid);
     				window.location.href = "index.html";

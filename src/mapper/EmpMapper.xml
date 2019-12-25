@@ -5,5 +5,10 @@
 	<select id="login" parameterType="String" resultType="emp">
 		SELECT *FROM tb_emp WHERE account = #{account} AND password = #{password}
 	</select>
-		
+	<select id="selectAllEmp" resultType="emp">
+		select * from tb_emp
+	</select>	
+	<insert id="addEmp" parameterType="emp">
+		insert into tb_emp(ename,gender,birth,password,account,phone,state,roleid)values(#{ename},#{gender},#{birth},#{password},#{account},#{phone},#{state},#{roleid})
+	</insert>
 </mapper>
