@@ -5,6 +5,4 @@ public class RoomType {
 	private String tname;
 	private Double price;
 	private Integer totalNum;
-	
-
 }
