@@ -289,7 +289,7 @@
     	$.ajax({
     		type:"get",
     		url:"addEmp",
-    		data:{"ename":$("#ename").val(),"gender":$("#gender").val(),"birth":$("#birth").val(),"password":$("#password").val(),"account":$("#account").val(),"phone":$("#phone").val(),"state":$("input:checked").val(),"roleid":$("input:checked").val()},
+    		data:{"ename":$("#ename").val(),"gender":$("#gender").val(),"birth":$("#birth").val(),"password":$("#password").val(),"account":$("#account").val(),"phone":$("#phone").val(),"state":$("input:radio:checked").val(),"roleid":$("input:checked").val()},
     		dataType:"text",
     		success:function(data){
     			if(data == "success"){
