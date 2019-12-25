@@ -105,7 +105,7 @@
     		data:{"account":$("#account").val(),"password":$("#password").val()},
     		dataType:"json",             //响应数据类型  text(String)/ json(Object)
     		success:function(data){
-    			console.log(data);
+    			console.log("login"+data);
     			if(data.state == "success"){
     				sessionStorage.setItem("roleid",data.emp.roleid);
     				window.location.href = "index.html";
