@@ -8,9 +8,13 @@ package com.icss.hotel.dao;
 import org.apache.ibatis.annotations.Param;
 
 import com.icss.hotel.pojo.Emp;
+import java.util.List;
 
 public interface EmpDao {
 	
 	Emp login(@Param("account")String account,@Param("password")String password);
+	
+	List<Emp> selectAllEmp();
 
+	int addEmp(Emp e);
 }

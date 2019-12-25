@@ -124,9 +124,9 @@
             
             <li class="has-submenu">
                 <a href="#"><i class="ion-compose"></i> <span class="nav-label">基础管理</span></a>
-                <ul class="list-unstyled">
+                <ul class="list-unstyled" id="emp">
                     <li>
-                        <a href="room.html" target="contentFrame">员工管理</a>
+                        <a href="emp.html" target="contentFrame">员工管理</a>
                     </li>
                 </ul>
             </li>
@@ -272,6 +272,14 @@
             time: 1200
         });
     });
+    
+    $(function(){
+    	var roleid = sessionStorage.getItem("roleid");
+    	console.log(roleid);
+    	if(roleid == 0){
+    		$("#emp").attr("style","display:none")
+    	}
+    })
 </script>
 
 </body>

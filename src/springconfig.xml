@@ -19,7 +19,7 @@
          </property>
        </bean>
        <!-- 加载配置文件 --> 
-       <!-- <context:property-placeholder location="classpath:jdbc.properties"/> --> 
+       		<!-- <context:property-placeholder location="classpath:jdbc.properties"/> -->
        <!-- 创建数据源 -->    
        <bean id="data" class="org.apache.commons.dbcp.BasicDataSource">
             <property name="driverClassName" value="${driver}"/>

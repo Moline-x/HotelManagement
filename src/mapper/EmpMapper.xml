@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.hotel.dao.EmpDao">
+
+	<select id="login" parameterType="String" resultType="emp">
+		SELECT *FROM tb_emp WHERE account = #{account} AND password = #{password}
+	</select>
+	<select id="selectAllEmp" resultType="emp">
+		select * from tb_emp
+	</select>	
+	<insert id="addEmp" parameterType="emp">
+		insert into tb_emp(ename,gender,birth,password,account,phone,state,roleid)values(#{ename},#{gender},#{birth},#{password},#{account},#{phone},#{state},#{roleid})
+	</insert>
+</mapper>
