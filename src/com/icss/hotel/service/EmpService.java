@@ -1,5 +1,7 @@
 package com.icss.hotel.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.icss.hotel.pojo.Emp;
@@ -9,9 +11,11 @@ import com.icss.hotel.pojo.Emp;
  * @author Moline-x
  *
  */
-@Service
+
 public interface EmpService {
 	
 	Emp login(String account,String password);
+
+	List<Emp> selectAllEmp();
 	
 }

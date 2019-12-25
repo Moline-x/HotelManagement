@@ -3,7 +3,8 @@ package com.icss.hotel.controller;
 import java.util.Map;
 import java.util.HashMap;
 
-import org.apache.commons.collections.map.HashedMap;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,14 +31,25 @@ public class EmpController {
 	public Object login(String account,String password) {
 		//逻辑处理 service
 		Emp e = service.login(account,password);
+		
 		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("emp",e);
 		if(e != null) {
 			map.put("state","success");
+		}else {
+			map.put("state","fail");
 		}
-		map.put("state","fail");
+		
 		
 		return map;
+	}
+	
+	//查询所有员工信息
+	@RequestMapping("/selectAllEmp")
+	@ResponseBody
+	public Object selectAllEmp() {
+		List<Emp> list = service.selectAllEmp();
+		return list;
 	}
 
 }

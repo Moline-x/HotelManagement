@@ -1,11 +1,13 @@
 package com.icss.hotel.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.icss.hotel.dao.EmpDao;
 import com.icss.hotel.pojo.Emp;
 import com.icss.hotel.service.EmpService;
 
+@Service
 public class EmpServiceImpl implements EmpService{
 	
 	@Autowired
@@ -13,6 +15,7 @@ public class EmpServiceImpl implements EmpService{
 	
 	@Override
 	public Emp login(String account,String password) {
-		return null;
+		Emp emp  = dao.login(account, password);
+		return emp;
 	}
 }
