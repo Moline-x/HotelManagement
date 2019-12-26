@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.icss.hotel.pojo.Emp;
+import com.icss.hotel.pojo.Type;
 import com.icss.hotel.service.EmpService;
+import com.icss.hotel.service.TypeService;
 
 
 /**
@@ -24,6 +26,8 @@ public class EmpController {
 	
 	@Autowired
 	EmpService service;
+	@Autowired
+	TypeService tservice;
 	
 	//登录
 	@RequestMapping("/login")
@@ -63,5 +67,14 @@ public class EmpController {
 			return "fail";
 		}
 	}
+	
+	//查看所有客房类型信息
+		@RequestMapping("/selectAllType")
+		@ResponseBody
+		public Object selectAllType() {
+			List<Type> list = tservice.selectAllType();
+			System.out.println(list);
+			return list;
+		}
 
 }
