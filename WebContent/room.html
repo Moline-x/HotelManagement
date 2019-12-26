@@ -54,9 +54,12 @@
             <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title">学生列表</h3>
+                        <h3 class="panel-title">客房详细列表</h3>
                     </div>
                     <div class="dataTables_length" id="datatable_length">
+                        <button class="btn btn-primary m-t-20" id="btnAddRoom" data-toggle="modal" data-target = "#addmodal"> <!-- <i class="fa"></i> --> 添加客房</button>
+                    </div>
+                    <!--<div class="dataTables_length" id="datatable_length">
                         <label>Show <select name="datatable_length" aria-controls="datatable"
                                             class="form-control input-sm">
                             <option value="10">10</option>
@@ -64,10 +67,14 @@
                             <option value="50">50</option>
                             <option value="100">100</option>
                         </select> entries</label>
-                    </div>
+                    </div> -->
                     <div class="panel-body">
                         <div class="row">
-                            <div class="col-md-12 col-sm-12 col-xs-12">
+                        	<div class="col-md-2 col-sm-2 col-xs-2">
+                        	
+                        	</div>
+                        	
+                            <div class="col-md-8 col-sm-8 col-xs-8">
                                 <table id="datatable" class="table table-striped">
                                     <thead>
                                     <tr>
@@ -78,54 +85,21 @@
 
                                             </label>
                                         </th>
-                                        <th>姓名</th>
-                                        <th>班级</th>
-                                        <th>性别</th>
-                                        <th>联系电话</th>
-                                        <th>邮箱</th>
-                                        <th>出生年月</th>
-                                        <th>身份证号</th>
-                                        <th>籍贯</th>
-                                        <th>毕业院校</th>
-                                        <th>专业</th>
-                                        <th>毕业时间</th>
-                                        <th>学历</th>
-                                        <th>就业意向</th>
+                                        <th>客房编号</th>
+                                        <th>客房类型</th>
+                                        <th>入住情况</th>
+                                        <th>备注</th>
                                         <th>操作</th>
                                     </tr>
                                     </thead>
-                                    <tbody>
-                                    <tr v-for="item in result">
-                                        <td>
-                                            <label class="cr-styled">
-                                                <input type="checkbox">
-                                                <i class="fa"></i>
-
-                                            </label>
-                                        </td>
-                                        <td>{{item.sname}}</td>
-                                        <td>{{item.cname}}</td>
-                                        <td v-if="item.gender ==1">男
-                                        </td>
-                                        <td v-if="item.gender ==0">女
-                                        </td>
-                                        <td>{{item.phone}}</td>
-                                        <td>{{item.email}}</td>
-                                        <td>{{item.birth}}</td>
-                                        <td>{{item.IdCard}}</td>
-                                        <td>{{item.snative}}</td>
-                                        <td>{{item.school}}</td>
-                                        <td>{{item.major}}</td>
-                                        <td>{{item.endTime}}</td>
-                                        <td>{{item.educ}}</td>
-                                        <td>{{item.jobYiXixang}}</td>
-                                        <td>
-                                            <a class="btn-link">详情</a>
-                                        </td>
-                                    </tr>
+                                    <tbody id="roomlist">
+                                    
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="col-md-2 col-sm-2 col-xs-2">
+                        	
+                        	</div>
                         </div>
                     </div>
                 </div>
@@ -158,35 +132,74 @@
 <script src="js/common.js"></script>
 
 <script type="text/javascript">
-    $(document).ready(function () {
+$(function(){
+		init();
+})
 
-        var app = new Vue({
-            el: 'div.row',
-            data: {
-                result: [],
-                tname: null,
-                currPages: 1,
-                nums: 10,
-                pages: {}
-            },
-            methods: {
-                queryAllStudent: function () {
-                    var param = {sname: this.tname, currPage: this.currPages, num: this.nums};
-                    axios.post(baseUrl + '/student/queryAllStudent.action', param).then(function (res) {
-                        console.log(res.data);
-                        app.result = res.data.result;
-                        console.log("-------::" + app.result)
-                        app.pages = res.data.pages;
-                    }).then(function (error) {
-                    })
-                }
-            },
-            mounted: function () {
-                this.queryAllStudent();
-            }
-        });
+function init(){
+		$("#roomlist").html("");
+		$.ajax({
+		type:"get",
+		url:"selectAllRoom",
+		dataType:"json",
+		success:function(data){
+			console.log(data);
+			$.each(data,function(index,r){
+				var x = "<tr>";
+				
+				x += "<td>";
+				x += "";
+				x += "</td>";
+				
+				x += "<td>";
+				x += r.rno;
+				x += "</td>";
+				
+				x += "<td>";
+				x += r.tno;
+				x += "</td>";
+				
+				x += "<td>";
+				x += r.rstate;
+				x += "</td>";
+				
+				x += "<td>";
+				x += r.remark;
+				x += "</td>";
+				
+				x += "<td>";
+				x += "啥呢";
+				x += "</td>";
+				
+				
+				
+				x += "</tr>";
+				
+				$("#roomlist").append(x);
+			})
+		},error:function(){
+			alert("error");
+		}
+		})
+	}
 
-    });
+//增加客房信息
+$("#addbtn").click(function(){
+	$.ajax({
+		type:"get",
+		url:"addType",
+		data:{"tname":$("#tname").val(),"price":$("#price").val(),"totalNum":$("#totalNum").val(),"RestNum":$("#RestNum").val()},
+		dataType:"text",
+		success:function(data){
+			if(data == "success"){
+				init();
+				$("#addmodal").modal("hide");
+			}
+		},error:function(){
+			alert("error");
+		}
+	})
+})
 </script>
 
 </body>
