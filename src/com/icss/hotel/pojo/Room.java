@@ -2,35 +2,35 @@ package com.icss.hotel.pojo;
 
 public class Room {
 	private Integer rno;
-	private Integer tno;
+	private String tname;
 	private Integer rstate;
 	private String remark;
 	public Room() {
 		super();
 	}
-	public Room(int rno, int tno, int rstate, String remark) {
+	public Room(Integer rno, String tname, Integer rstate, String remark) {
 		super();
 		this.rno = rno;
-		this.tno = tno;
+		this.tname = tname;
 		this.rstate = rstate;
 		this.remark = remark;
 	}
-	public int getRno() {
+	public Integer getRno() {
 		return rno;
 	}
-	public void setRno(int rno) {
+	public void setRno(Integer rno) {
 		this.rno = rno;
 	}
-	public int getTno() {
-		return tno;
+	public String getTname() {
+		return tname;
 	}
-	public void setTno(int tno) {
-		this.tno = tno;
+	public void setTname(String tname) {
+		this.tname = tname;
 	}
-	public int getRstate() {
+	public Integer getRstate() {
 		return rstate;
 	}
-	public void setRstate(int rstate) {
+	public void setRstate(Integer rstate) {
 		this.rstate = rstate;
 	}
 	public String getRemark() {
@@ -41,7 +41,8 @@ public class Room {
 	}
 	@Override
 	public String toString() {
-		return "Room [rno=" + rno + ", tno=" + tno + ", rstate=" + rstate + ", remark=" + remark + "]";
+		return "Room [rno=" + rno + ", tname=" + tname + ", rstate=" + rstate + ", remark=" + remark + "]";
 	}
+	
 	
 }

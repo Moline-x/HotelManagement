@@ -29,8 +29,8 @@ public class RoomController {
 	//增加客房信息
 	@RequestMapping("/addRoom")
 	@ResponseBody
-	public Object addRoom(Room e) {
-		int i = service.addRoom(e);
+	public Object addRoom(int tno,int rstate,String remark) {
+		int i = service.addRoom(tno,rstate,remark);
 		if(i>0) {
 			return "success";
 		}else {

@@ -111,6 +111,52 @@
     </div>
 
 </section>
+
+<!-- 增加模态框 -->
+
+<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">客房添加</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							
+							<div class="form-group">
+								<label for="tname" class="col-sm-3 control-label">客房类型：</label>
+								<div class="col-sm-7">
+								<select name = "tname" class = "form-control" id="selectType">
+									
+								</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="rstate" class="col-sm-3 control-label">入住情况</label>
+								<div class="col-sm-7">
+									<input type="radio"  name="rstate" value="0" checked>空闲
+									<input type="radio"  name="rstate" value="1">入住
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="remark" class="col-sm-3 control-label">描述</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="remark" placeholder="描述">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="addbtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 增加模态框 -->
 <!-- Main Content Ends -->
 
 <!-- js placed at the end of the document so the pages load faster -->
@@ -134,6 +180,7 @@
 <script type="text/javascript">
 $(function(){
 		init();
+		addOption();
 })
 
 function init(){
@@ -156,17 +203,20 @@ function init(){
 				x += "</td>";
 				
 				x += "<td>";
-				x += r.tno;
+				x += r.tname;
 				x += "</td>";
 				
 				x += "<td>";
-				x += r.rstate;
-				x += "</td>";
 				
+				if(r.rstate == 0){
+					x += "空 闲";
+				}else if(r.rstate == 1){
+					x += "入 住";
+				}
+				x += "</td>";
 				x += "<td>";
 				x += r.remark;
 				x += "</td>";
-				
 				x += "<td>";
 				x += "啥呢";
 				x += "</td>";
@@ -182,13 +232,31 @@ function init(){
 		}
 		})
 	}
+	
+	function addOption(){
+		$.ajax({
+			type:"get",
+			url:"selectAllType",
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+				$.each(data,function(index,t){
+					　$("#selectType").append("<option value="+t.tno+">"+t.tname+"</option>");
+				})
+			},error:function(){
+				alert("error");
+			}
+			})
+	}
+	
 
 //增加客房信息
 $("#addbtn").click(function(){
+	var option = $("#selectType option:selected");
 	$.ajax({
 		type:"get",
-		url:"addType",
-		data:{"tname":$("#tname").val(),"price":$("#price").val(),"totalNum":$("#totalNum").val(),"RestNum":$("#RestNum").val()},
+		url:"addRoom",
+		data:{"tno":option.val(),"rstate":$("input[name='rstate']:checked").val(),"remark":$("#remark").val()},
 		dataType:"text",
 		success:function(data){
 			if(data == "success"){

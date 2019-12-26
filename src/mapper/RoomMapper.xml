@@ -2,9 +2,10 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.icss.hotel.dao.RoomDao">
 	<select id="selectAllRoom" resultType="room">
-		SELECT * FROM tb_room
+		
+		select tb_room.rno,tb_type.tname,rstate,remark	from tb_room,tb_type where tb_room.tno = tb_type.tno
 	</select>
-	<insert id="addRoom" parameterType="room">
-		insert into tb_room(rno,tno,rstate,remark)values(#{rno},#{tno},#{rstate},#{remark})
+	<insert id="addRoom">
+		insert into tb_room(tno,rstate,remark) values (#{tno},#{rstate},#{remark})
 	</insert>
 </mapper>
