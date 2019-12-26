@@ -67,14 +67,4 @@ public class EmpController {
 			return "fail";
 		}
 	}
-	
-	//查看所有客房类型信息
-		@RequestMapping("/selectAllType")
-		@ResponseBody
-		public Object selectAllType() {
-			List<Type> list = tservice.selectAllType();
-			System.out.println(list);
-			return list;
-		}
-
 }
