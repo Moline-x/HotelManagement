@@ -10,4 +10,8 @@ public interface TypeDao {
 
 	int addType(Type e);
 
+	int deleteTypeById(String tno);
+
+	int updateTypeById(Type t);
+
 }
