@@ -10,4 +10,8 @@ public interface TypeService  {
 
 	int addType(Type e);
 
+	int deleteTypeById(String tno);
+
+	int updateTypeById(Type t);
+
 }

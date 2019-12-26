@@ -12,6 +12,7 @@ public class Type {
 		super();
 	}
 
+	
 	public Type(Integer tno, String tname, Double price, Integer totalNum, Integer restNum) {
 		super();
 		this.tno = tno;
@@ -20,6 +21,7 @@ public class Type {
 		this.totalNum = totalNum;
 		RestNum = restNum;
 	}
+
 
 	public Integer getTno() {
 		return tno;

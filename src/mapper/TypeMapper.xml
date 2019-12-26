@@ -7,4 +7,10 @@
 	<insert id="addType" parameterType="type">
 		insert into tb_type(tname,price,totalNum,RestNum)values(#{tname},#{price},#{totalNum},#{RestNum})
 	</insert>
+	<delete id="deleteTypeById" parameterType="String">
+		delete from tb_type where tno = #{tno}
+	</delete>
+	<update id="updateTypeById" parameterType="type">
+		update tb_type set tname = #{tname},price = #{price},totalNum = #{totalNum},RestNum = #{RestNum} where tno = #{tno}
+	</update>
 </mapper>

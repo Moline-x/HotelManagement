@@ -38,4 +38,27 @@ public class TypeController {
 					return "fail";
 				}
 			}
+	//删除客房类型信息
+	@RequestMapping("/deleteTypeById")
+	@ResponseBody
+	public Object deleteTypeById(String tno) {
+		int i = service.deleteTypeById(tno);
+		if(i > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
+	
+	//更新客房类型信息
+	@RequestMapping("/updateTypeById")
+	@ResponseBody
+	public Object updateTypeById(Type t) {
+		int i = service.updateTypeById(t);
+		if(i > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
 }
