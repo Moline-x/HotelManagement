@@ -1,19 +1,18 @@
 package com.icss.hotel.pojo;
 
 public class Type {
-	private int tno;
+	private Integer tno;
 	private String tname;
-	private double price;
-	private int totalNum;
-	private int RestNum;
+	private Double price;
+	private Integer totalNum;
+	private Integer RestNum;
 	
 	
 	public Type() {
 		super();
 	}
 
-
-	public Type(int tno, String tname, double price, int totalNum, int restNum) {
+	public Type(Integer tno, String tname, Double price, Integer totalNum, Integer restNum) {
 		super();
 		this.tno = tno;
 		this.tname = tname;
@@ -22,63 +21,50 @@ public class Type {
 		RestNum = restNum;
 	}
 
-
-	public int getTno() {
+	public Integer getTno() {
 		return tno;
 	}
 
-
-	public void setTno(int tno) {
+	public void setTno(Integer tno) {
 		this.tno = tno;
 	}
-
 
 	public String getTname() {
 		return tname;
 	}
 
-
 	public void setTname(String tname) {
 		this.tname = tname;
 	}
 
-
-	public double getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-
-	public void setPrice(double price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
-
-	public int getTotalNum() {
+	public Integer getTotalNum() {
 		return totalNum;
 	}
 
-
-	public void setTotalNum(int totalNum) {
+	public void setTotalNum(Integer totalNum) {
 		this.totalNum = totalNum;
 	}
 
-
-	public int getRestNum() {
+	public Integer getRestNum() {
 		return RestNum;
 	}
 
-
-	public void setRestNum(int restNum) {
+	public void setRestNum(Integer restNum) {
 		RestNum = restNum;
 	}
-
 
 	@Override
 	public String toString() {
 		return "Type [tno=" + tno + ", tname=" + tname + ", price=" + price + ", totalNum=" + totalNum + ", RestNum="
 				+ RestNum + "]";
 	}
-	
-	
 	
 }

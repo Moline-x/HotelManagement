@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.icss.hotel.pojo.Emp;
-import com.icss.hotel.pojo.Room;
-import com.icss.hotel.pojo.Type;
 import com.icss.hotel.service.EmpService;
 import com.icss.hotel.service.RoomService;
 import com.icss.hotel.service.TypeService;
@@ -74,45 +72,5 @@ public class EmpController {
 		}
 	}
 	
-	//查看所有客房类型信息
-		@RequestMapping("/selectAllType")
-		@ResponseBody
-		public Object selectAllType() {
-			List<Type> list = tservice.selectAllType();
-			System.out.println(list);
-			return list;
-		}
-		
-		//增加客房类型信息
-		@RequestMapping("/addType")
-		@ResponseBody
-		public Object addType(Type e) {
-			int i = tservice.addType(e);
-			if(i>0) {
-				return "success";
-			}else {
-				return "fail";
-			}
-		}
-		//查看所有客房信息
-		@RequestMapping("/selectAllRoom")
-		@ResponseBody
-		public Object selectAllRoom() {
-			List<Room> list = rservice.selectAllRoom();
-			System.out.println("list"+list);
-			return list;
-		}
-			
-		//增加客房信息
-		@RequestMapping("/addRoom")
-		@ResponseBody
-		public Object addRoom(Room e) {
-			int i = rservice.addRoom(e);
-			if(i>0) {
-				return "success";
-			}else {
-				return "fail";
-			}
-		}
 
 }
