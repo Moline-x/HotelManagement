@@ -108,9 +108,8 @@
 					</div>
 					<div class="modal-body">
 						<form class="form-horizontal">
-							
 							<div class="form-group">
-								<label for="tname" class="col-sm-3 control-label">客房类型名称：</label>
+								<label for="tname" class="col-sm-3 control-label">客房类型：</label>
 								<div class="col-sm-7">
 									<input type="text" class="form-control" id="tname" placeholder="客房类型名称">
 								</div>
@@ -128,7 +127,7 @@
 								</div>
 							</div>
 							<div class="form-group">
-								<label or="RestNum" class="col-sm-3 control-label">剩余量</label>
+								<label for="RestNum" class="col-sm-3 control-label">剩余量</label>
 								<div class="col-sm-7">
 									<input type="text" class="form-control" id="RestNum" placeholder="剩余量">
 								</div>
@@ -143,6 +142,54 @@
 			</div>
 		</div>
 <!-- 增加模态框 -->
+<!-- 修改模态框 -->
+
+<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">客房类型修改</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+						<input type="hidden" class="form-control" id="uptno">
+							<div class="form-group">
+								<label for="tname" class="col-sm-3 control-label">客房类型：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="uptname" placeholder="客房类型名称">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="price" class="col-sm-3 control-label">价格：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="upprice" placeholder="价格">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="totalNum" class="col-sm-3 control-label">总量：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="uptotalNum" placeholder="总量">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="RestNum" class="col-sm-3 control-label">剩余量</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="upRestNum" placeholder="剩余量">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="updatebtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 修改模态框 -->
 </section>
 <!-- Main Content Ends -->
 
@@ -204,7 +251,13 @@
     				x += t.restNum;
     				x += "</td>";
     				
+    				x += "<td>";
+    				x += '<a class="btn btn-primary m-t-20"  id="btnAddType" onclick="update('+t.tno+',\''+t.tname+'\','+t.price+','+t.totalNum+','+t.restNum+')"><i class="fa"></i> 编辑</a>';
+    				x += "</td>";
     				
+    				x += "<td>";
+    				x += '<a class="btn btn-primary m-t-20"  onclick="del('+t.tno+')" id="btnAddType" ><i class="fa"></i> 删除</a>';
+    				x += "</td>";
     				
     				x += "</tr>";
     				
@@ -221,7 +274,7 @@
    	$.ajax({
    		type:"get",
    		url:"addType",
-   		data:{"tname":$("#tname").val(),"price":$("#price").val(),"totalNum":$("#totalNum").val(),"RestNum":$("#RestNum").val()},
+   		data:{"tno":$("#tno").val(),"tname":$("#tname").val(),"price":$("#price").val(),"totalNum":$("#totalNum").val(),"RestNum":$("#RestNum").val()},
    		dataType:"text",
    		success:function(data){
    			if(data == "success"){
@@ -233,6 +286,55 @@
    		}
    	})
    })
+   
+   //删除客房类型信息
+   function del(tno){
+	 $.ajax({
+		 type:"get",
+		 url:"deleteTypeById",
+		 data:{"tno":tno},
+		 dataType:"text",
+		 success:function(data){
+			 if(data == "success"){
+				 init();
+			 }else{
+				 alert("删除失败");
+			 }
+		 },error:function(){
+			 alert(error);
+		 }
+	 })
+ }
+ 
+ //更新客房类型信息
+ function update(tno,tname,price,totalNum,restNum){
+	 $("#uptno").val(tno);
+	 $("#uptname").val(tname);
+	 $("#upprice").val(price);
+	 $("#uptotalNum").val(totalNum);
+	 $("#upRestNum").val(restNum);
+	 $("#updatemodal").modal();
+ }
+ //更新信息
+ $("#updatebtn").click(function(){
+	 $.ajax({
+		 type:"get",
+		 url:"updateTypeById",
+		 data:{"tno":$('#uptno').val(),"tname":$('#uptname').val(),"price":$("#upprice").val(),"totalNum":$("#uptotalNum").val(),"RestNum":$('#upRestNum').val()},
+		 dataType:"text",
+		 success:function(data){
+			 if(data == "success"){
+				 init();
+				 //隐藏更新的模态框
+				 $("#updatemodal").modal("hide");
+			 }else{
+				 alert("更新失败");
+			 }
+		 },error:function(){
+			 alert("error");
+		 }
+	 })
+ })
 </script>
 
 </body>

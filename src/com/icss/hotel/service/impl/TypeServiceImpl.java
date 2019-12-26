@@ -24,5 +24,15 @@ public class TypeServiceImpl implements TypeService {
 		// TODO Auto-generated method stub
 		return dao.addType(e);
 	}
+	@Override
+	public int deleteTypeById(String tno) {
+		// TODO Auto-generated method stub
+		return dao.deleteTypeById(tno);
+	}
+	@Override
+	public int updateTypeById(Type t) {
+		// TODO Auto-generated method stub
+		return dao.updateTypeById(t);
+	}
 
 }
