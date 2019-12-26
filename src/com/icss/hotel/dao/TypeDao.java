@@ -8,4 +8,6 @@ public interface TypeDao {
 
 	List<Type> selectAllType();
 
+	int addType(Type e);
+
 }

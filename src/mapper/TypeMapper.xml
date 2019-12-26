@@ -4,5 +4,7 @@
 	<select id="selectAllType" resultType="type">
 		SELECT * FROM tb_type
 	</select>
-	
+	<insert id="addType" parameterType="type">
+		insert into tb_type(tname,price,totalNum,RestNum)values(#{tname},#{price},#{totalNum},#{RestNum})
+	</insert>
 </mapper>

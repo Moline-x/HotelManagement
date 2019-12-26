@@ -8,4 +8,6 @@ public interface TypeService  {
 
 	List<Type> selectAllType();
 
+	int addType(Type e);
+
 }

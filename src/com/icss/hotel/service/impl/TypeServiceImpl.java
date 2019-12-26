@@ -19,5 +19,10 @@ public class TypeServiceImpl implements TypeService {
 		System.out.println("service"+list);
 		return list;
 	}
+	@Override
+	public int addType(Type e) {
+		// TODO Auto-generated method stub
+		return dao.addType(e);
+	}
 
 }

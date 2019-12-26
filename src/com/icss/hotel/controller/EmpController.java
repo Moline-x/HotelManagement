@@ -76,5 +76,17 @@ public class EmpController {
 			System.out.println(list);
 			return list;
 		}
+		
+		//增加员工信息
+		@RequestMapping("/addType")
+		@ResponseBody
+		public Object addType(Type e) {
+			int i = tservice.addType(e);
+			if(i>0) {
+				return "success";
+			}else {
+				return "fail";
+			}
+		}
 
 }

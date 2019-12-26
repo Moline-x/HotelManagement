@@ -55,8 +55,9 @@
                         <h3 class="panel-title">客房类型列表</h3>
                     </div>
                     <div class="dataTables_length" id="datatable_length">
-                        <a class="btn btn-primary m-t-20" href="add_class.html">
-                            添加客房类型</a>
+                        <a class="btn btn-primary m-t-20" data-toggle="modal" data-target="#addmodal" id="btnAddType">
+                       	     添加客房类型
+                       	</a>
                         <span id="showName"></span>
                     </div>
                 
@@ -94,6 +95,53 @@
 
     </div>
 
+<!-- 增加模态框 -->
+<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">客房类型添加</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							
+							<div class="form-group">
+								<label for="tname" class="col-sm-3 control-label">客房类型名称：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="tname" placeholder="客房类型名称">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="price" class="col-sm-3 control-label">价格：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="price" placeholder="价格">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="totalNum" class="col-sm-3 control-label">总量：</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="totalNum" placeholder="总量">
+								</div>
+							</div>
+							<div class="form-group">
+								<label or="RestNum" class="col-sm-3 control-label">剩余量</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="RestNum" placeholder="剩余量">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="addbtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 增加模态框 -->
 </section>
 <!-- Main Content Ends -->
 
@@ -166,6 +214,24 @@
     		}
    		})
    	}
+   
+ //增加员工信息
+   $("#addbtn").click(function(){
+   	$.ajax({
+   		type:"get",
+   		url:"addType",
+   		data:{"tname":$("#tname").val(),"price":$("#price").val(),"totalNum":$("#totalNum").val(),"RestNum":$("#RestNum").val()},
+   		dataType:"text",
+   		success:function(data){
+   			if(data == "success"){
+   				init();
+   				$("#addmodal").modal("hide");
+   			}
+   		},error:function(){
+   			alert("error");
+   		}
+   	})
+   })
 </script>
 
 </body>

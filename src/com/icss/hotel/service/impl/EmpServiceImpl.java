@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.icss.hotel.dao.EmpDao;
 import com.icss.hotel.pojo.Emp;
+import com.icss.hotel.pojo.Type;
 import com.icss.hotel.service.EmpService;
 import java.util.List;
 
@@ -30,5 +31,6 @@ public class EmpServiceImpl implements EmpService{
 	public int addEmp(Emp e) {
 		return dao.addEmp(e);
 	}
+
 	
 }

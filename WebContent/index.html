@@ -122,9 +122,9 @@
             </li>
 
             
-            <li class="has-submenu">
+            <li class="has-submenu" id="emp">
                 <a href="#"><i class="ion-compose"></i> <span class="nav-label">基础管理</span></a>
-                <ul class="list-unstyled" id="emp">
+                <ul class="list-unstyled" >
                     <li>
                         <a href="emp.html" target="contentFrame">员工管理</a>
                     </li>
@@ -275,7 +275,7 @@
     
     $(function(){
     	var roleid = sessionStorage.getItem("roleid");
-    	console.log(roleid);
+    	console.log("roleid"+roleid);
     	if(roleid == 0){
     		$("#emp").attr("style","display:none")
     	}
