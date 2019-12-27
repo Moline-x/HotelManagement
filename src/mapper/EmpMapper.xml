@@ -11,4 +11,10 @@
 	<insert id="addEmp" parameterType="emp">
 		insert into tb_emp(ename,gender,birth,password,account,phone,state,roleid)values(#{ename},#{gender},#{birth},#{password},#{account},#{phone},#{state},#{roleid})
 	</insert>
+	<select id="selectByEmpno" resultType="emp">
+		select * from tb_emp where empno = #{empno}
+	</select>
+	<update id="updateEmpById" parameterType="emp">
+		update tb_emp set ename = #{ename},gender = #{gender},birth = #{birth},phone = #{phone} where empno = #{empno}
+	</update>
 </mapper>

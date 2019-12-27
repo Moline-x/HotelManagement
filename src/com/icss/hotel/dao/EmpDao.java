@@ -17,4 +17,8 @@ public interface EmpDao {
 	List<Emp> selectAllEmp();
 
 	int addEmp(Emp e);
+
+	Emp selectByEmpno(@Param("empno")int empno);
+
+	int updateEmpById(Emp e);
 }

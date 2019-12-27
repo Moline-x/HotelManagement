@@ -220,7 +220,7 @@ function init(){
 				x += "<td>";
 				x += r.restNum;
 				x += "</td>";
-				x += "<td>";
+				x += '<td id="remark">';
 				x += r.remark;
 				x += "</td>";
 				x += "<td>";
@@ -272,6 +272,7 @@ $("#addbtn").click(function(){
 			if(data == "success"){
 				init();
 				$("#addmodal").modal("hide");
+				$("#remark").val("");
 			}
 		},error:function(){
 			alert("error");

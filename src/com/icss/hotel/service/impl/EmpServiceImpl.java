@@ -32,5 +32,17 @@ public class EmpServiceImpl implements EmpService{
 		return dao.addEmp(e);
 	}
 
+	@Override
+	public Emp selectByEmpno(int empno) {
+		// TODO Auto-generated method stub
+		return dao.selectByEmpno(empno);
+	}
+
+	@Override
+	public int updateEmpById(Emp e) {
+		// TODO Auto-generated method stub
+		return dao.updateEmpById(e);
+	}
+
 	
 }
