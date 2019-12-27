@@ -158,6 +158,51 @@
 			</div>
 		</div>
 <!-- 增加模态框 -->
+<!-- 修改模态框 -->
+
+<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">客房修改</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<input type="hidden" class="form-control" id="uprno">
+							<div class="form-group">
+								<label for="tname" class="col-sm-3 control-label">客房类型：</label>
+								<div class="col-sm-7">
+								<select name = "tname" class = "form-control" id="upselectType">
+									
+								</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="rstate" class="col-sm-3 control-label">入住情况</label>
+								<div class="col-sm-7">
+									<input type="radio"  id="upout" name="uprstate" value="0" checked>空闲
+									<input type="radio"  id="upin" name="uprstate" value="1">入住
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="remark" class="col-sm-3 control-label">描述</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="upremark" placeholder="描述">
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="updatebtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 修改模态框 -->
 <!-- Main Content Ends -->
 
 <!-- js placed at the end of the document so the pages load faster -->
@@ -224,11 +269,12 @@ function init(){
 				x += r.remark;
 				x += "</td>";
 				x += "<td>";
-				x += "啥呢";
+				x += '<a class="btn btn-primary m-t-20"  id="btnAddType" onclick="update('+r.rno+',\''+r.tname+'\','+r.rstate+',\''+r.remark+'\')"><i class="fa"></i> 编辑</a>';;
 				x += "</td>";
 				x += "<td>";
-				x += "啥呢";
+				x += '<a class="btn btn-primary m-t-20"  onclick="del('+r.rno+')" id="btnAddType" ><i class="fa"></i> 删除</a>';
 				x += "</td>";
+				
 				
 				
 				
@@ -273,6 +319,90 @@ $("#addbtn").click(function(){
 				init();
 				$("#addmodal").modal("hide");
 				$("#remark").val("");
+			}
+		},error:function(){
+			alert("error");
+		}
+	})
+})
+
+$("#addmodal").on("hidden.bs.modal",function(){
+	$("#selectType").html("");
+})
+
+$("#updatemodal").on("hidden.bs.modal",function(){
+	$("#upselectType").html("");
+})
+
+
+//删除客房信息
+function del(rno){
+	$.ajax({
+		type:"get",
+		url:"deleteRoomById",
+		data:{"rno":rno},
+		dataType:"text",
+		success:function(data){
+			console.log('hh'+data);
+			if(data == "success"){
+				init();
+			}else{
+				alert("删除失败");
+			}
+		},error:function(){
+			alert("error");
+		}
+	})
+}
+
+//更新客房信息
+function update(rno,tname,rstate,remark){
+	$("#uprno").val(rno);
+	$("#upremark").val(remark);
+	if(rstate == 0){
+		$("#upout").attr("checked",true);
+	}else if(rstate == 1){
+		$("#upin").attr("checked",true);
+	}
+	selectUpName(tname);	
+	
+	$("#updatemodal").modal();
+}
+
+function selectUpName(tname){
+	$.ajax({
+		type:"get",
+		url:"selectAllType",
+		dataType:"json",
+		success:function(data){
+			$.each(data,function(index,t){
+				var x = "";
+				if(t.tname == tname){
+					x = '<option value='+t.tno+' selected>';
+				}else{
+					x = '<option value='+t.tno+'>';
+				}
+				
+				x += t.tname;
+				x += '</option>';
+				
+				$("#upselectType").append(x);
+			})
+		}
+	})
+}
+
+//更新操作
+$("#updatebtn").click(function(){
+	$.ajax({
+		type:"get",
+		url:"updateRoomById",
+		data:{"rno":$("#uprno").val(),"tno":$("#upselectType").val(),"rstate":$("input[name=uprstate]:checked").val(),"remark":$("#upremark").val()},
+		dataType:"text",
+		success:function(data){
+			if(data == "success"){
+				init();
+				$("#updatemodal").modal("hide");
 			}
 		},error:function(){
 			alert("error");
