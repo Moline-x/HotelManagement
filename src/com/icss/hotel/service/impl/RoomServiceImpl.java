@@ -21,9 +21,9 @@ public class RoomServiceImpl implements RoomService{
 		return list;
 	}
 	@Override
-	public int addRoom(Room e) {
+	public int addRoom(int tno,int rstate,String remark) {
 		// TODO Auto-generated method stub
-		return dao.addRoom(e);
+		return dao.addRoom(tno,rstate,remark);
 	}
 
 }
