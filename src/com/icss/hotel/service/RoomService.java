@@ -10,4 +10,8 @@ public interface RoomService {
 
 	int addRoom(int tno,int rstate,String remark);
 
+	int deleteRoomById(String rno);
+
+	int updateRoomById(Room r);
+
 }

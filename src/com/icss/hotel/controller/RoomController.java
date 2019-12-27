@@ -37,4 +37,28 @@ public class RoomController {
 			return "fail";
 		}
 	}
+	
+	//É¾³ı¿Í·¿
+	@RequestMapping("/deleteRoomById")
+	@ResponseBody
+	public Object deleteRoomById(String rno) {
+		int i = service.deleteRoomById(rno);
+		if(i > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
+	
+	//±à¼­
+	@RequestMapping("/updateRoomById")
+	@ResponseBody
+	public Object updateRoomById(Room r) {
+		int i = service.updateRoomById(r);
+		if(i > 0) {
+			return "success";
+		}else {
+			return "fail";
+		}
+	}
 }

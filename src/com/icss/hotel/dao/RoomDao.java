@@ -12,4 +12,8 @@ public interface RoomDao {
 
 	int addRoom(@Param("tno")int tno,@Param("rstate")int rstate,@Param("remark")String remark);
 
+	int deleteRoomById(String rno);
+
+	int updateRoomById(Room r);
+
 }

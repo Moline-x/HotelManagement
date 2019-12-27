@@ -25,5 +25,15 @@ public class RoomServiceImpl implements RoomService{
 		// TODO Auto-generated method stub
 		return dao.addRoom(tno,rstate,remark);
 	}
+	@Override
+	public int deleteRoomById(String rno) {
+		// TODO Auto-generated method stub
+		return dao.deleteRoomById(rno);
+	}
+	@Override
+	public int updateRoomById(Room r) {
+		// TODO Auto-generated method stub
+		return dao.updateRoomById(r);
+	}
 
 }
