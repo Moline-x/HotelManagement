@@ -8,6 +8,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.icss.hotel.pojo.Emp;
@@ -77,7 +78,7 @@ public class EmpController {
 	//查询所有员工信息
 	@RequestMapping("/selectByEmpno")
 	@ResponseBody
-	public Object selectByEmpno(int empno) {
+	public Object selectByEmpno(Integer empno) {
 		
 		Emp emp = service.selectByEmpno(empno);
 		System.out.println("emp"+emp);

@@ -21,9 +21,12 @@ public interface EmpService {
 
 	int addEmp(Emp e);
 
-	Emp selectByEmpno(int empno);
+	Emp selectByEmpno(Integer empno);
 
 	int updateEmpById(Emp e);
+
+
+	
 
 	
 }
