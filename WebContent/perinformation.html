@@ -100,7 +100,7 @@
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" id="close">关闭</button>
 						<button type="button" class="btn btn-primary" id="updatebtn">提交</button>
 					</div>
 				</div>
@@ -153,7 +153,6 @@ function init(empno){
 				$("#upgender").val(e.gender);
 				$("#upbirth").val(e.birth);
 				$("#upphone").val(e.phone);
-				
 			
 		},error:function(){
 			alert("error");
@@ -178,6 +177,7 @@ $("#updatebtn").click(function(){
 				 //隐藏更新的模态框
 				 
 				 $("#updatemodal").modal("hide");
+				 window.location.href = "profile.html";
 			 }else{
 				 alert("更新失败");
 			 }

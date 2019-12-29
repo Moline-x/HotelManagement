@@ -18,7 +18,7 @@ public interface EmpDao {
 
 	int addEmp(Emp e);
 
-	Emp selectByEmpno(@Param("empno")int empno);
+	Emp selectByEmpno(@Param("empno")Integer empno);
 
 	int updateEmpById(Emp e);
 }

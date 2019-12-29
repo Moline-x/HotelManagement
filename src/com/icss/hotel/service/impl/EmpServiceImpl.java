@@ -33,7 +33,7 @@ public class EmpServiceImpl implements EmpService{
 	}
 
 	@Override
-	public Emp selectByEmpno(int empno) {
+	public Emp selectByEmpno(Integer empno) {
 		// TODO Auto-generated method stub
 		return dao.selectByEmpno(empno);
 	}
