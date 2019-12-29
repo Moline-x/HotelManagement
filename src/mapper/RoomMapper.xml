@@ -3,9 +3,17 @@
 <mapper namespace="com.icss.hotel.dao.RoomDao">
 	<select id="selectAllRoom" resultType="room">
 		
-		select tb_room.rno,tb_type.tname,rstate,remark	from tb_room,tb_type where tb_room.tno = tb_type.tno
+		select tb_room.rno,tb_type.tno,tb_type.price,tb_type.RestNum,tb_type.tname,rstate,remark	from tb_room,tb_type where tb_room.tno = tb_type.tno
 	</select>
-	<insert id="addRoom">
+	<insert id="addRoom" parameterType="room">
 		insert into tb_room(tno,rstate,remark) values (#{tno},#{rstate},#{remark})
 	</insert>
+	
+	<delete id="deleteRoomById" parameterType="String">
+		delete from tb_room where rno = #{rno}
+	</delete>
+	
+	<update id="updateRoomById" parameterType="room">
+		update tb_room set tno=#{tno},rstate=#{rstate},remark=#{remark} where rno=#{rno}
+	</update>
 </mapper>

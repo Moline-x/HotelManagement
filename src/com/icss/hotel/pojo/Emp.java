@@ -28,6 +28,26 @@ public class Emp {
 		super();
 	}
 
+	public Emp(Integer empno, String ename, String gender, String birth, String phone) {
+		super();
+		this.empno = empno;
+		this.ename = ename;
+		this.gender = gender;
+		this.birth = birth;
+		this.phone = phone;
+	}
+
+	public Emp(Integer empno, String ename, String gender, String birth, String phone, Integer state, Integer roleid) {
+		super();
+		this.empno = empno;
+		this.ename = ename;
+		this.gender = gender;
+		this.birth = birth;
+		this.phone = phone;
+		this.state = state;
+		this.roleid = roleid;
+	}
+
 	public Emp(Integer empno, String ename, String gender, String birth, String password, String account, String phone,
 			Integer state, Integer roleid) {
 		super();

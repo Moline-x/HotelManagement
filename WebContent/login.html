@@ -108,7 +108,7 @@
     			console.log("login"+data);
     			if(data.state == "success"){
     				sessionStorage.setItem("roleid",data.emp.roleid);
-    				console.log(data.emp.roleid);
+    				sessionStorage.setItem("empno",data.emp.empno);
     				window.location.href = "index.html";
     			}else{
     				alert("登录失败");
