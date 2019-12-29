@@ -145,7 +145,7 @@
 							<div class="form-group">
 								<label for="remark" class="col-sm-3 control-label">描述</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="remark" placeholder="描述">
+									<input type="text" class="form-control" id="remark" placeholder="描述" value="jklove">
 								</div>
 							</div>
 						</form>
@@ -265,7 +265,7 @@ function init(){
 				x += "<td>";
 				x += r.restNum;
 				x += "</td>";
-				x += '<td id="remark">';
+				x += '<td>';
 				x += r.remark;
 				x += "</td>";
 				x += "<td>";
@@ -318,7 +318,7 @@ $("#addbtn").click(function(){
 			if(data == "success"){
 				init();
 				$("#addmodal").modal("hide");
-				$("#remark").val("");
+				
 			}
 		},error:function(){
 			alert("error");
@@ -326,9 +326,9 @@ $("#addbtn").click(function(){
 	})
 })
 
-$("#addmodal").on("hidden.bs.modal",function(){
-	$("#selectType").html("");
-})
+//$("#addmodal").on("hidden.bs.modal",function(){
+//	$("#selectType").html("");
+//})
 
 $("#updatemodal").on("hidden.bs.modal",function(){
 	$("#upselectType").html("");
@@ -365,7 +365,7 @@ function update(rno,tname,rstate,remark){
 		$("#upin").attr("checked",true);
 	}
 	selectUpName(tname);	
-	
+	$("#remark").val("");
 	$("#updatemodal").modal();
 }
 
