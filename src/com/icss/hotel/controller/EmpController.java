@@ -15,7 +15,6 @@ import com.icss.hotel.service.EmpService;
 import com.icss.hotel.service.RoomService;
 import com.icss.hotel.service.TypeService;
 
-
 /**
  * ÇëÇó×ª·¢
  * @author Moline-x
@@ -31,8 +30,6 @@ public class EmpController {
 	@Autowired
 	RoomService rservice;
 	
-	
-	
 	//µÇÂ¼
 	@RequestMapping("/login")
 	@ResponseBody
@@ -47,7 +44,6 @@ public class EmpController {
 		}else {
 			map.put("state","fail");
 		}
-		
 		
 		return map;
 	}
@@ -71,6 +67,4 @@ public class EmpController {
 			return "fail";
 		}
 	}
-	
-
 }
