@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.icss.hotel.OrderDao">
+	<select id="selectAllOrder" resultType="order">
+		select tb_order.ono,tb_order.cno,tb_order.rno,tb_order.startTime,tb_order.endTime,tb_customer.cname,tb_type.tname,tb_room.rno,tb_order.ostate from tb_order,tb_customer,tb_room,tb_type where tb_customer.cno = tb_order.cno and tb_room.rno = tb_order.rno;
+	</select>
+	<insert id="addOrder" parameterType="order">
+		insert into tb_order(cno,rno,startTime,endTime,ostate) values(#{cno},#{rno},#{startTime},#{endTime},#{ostate})
+	</insert>
+</mapper>
