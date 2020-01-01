@@ -16,9 +16,9 @@ public class OrderServiceImpl implements OrderService{
 	OrderDao dao;
 
 	@Override
-	public int addOrder(Order o) {
+	public int addOrder(String cidcard,Integer tno,Integer rno,String startTime,String endTime,Integer ostate) {
 		// TODO Auto-generated method stub
-		return dao.addOrder(o);
+		return dao.addOrder(cidcard,tno,rno,startTime,endTime,ostate);
 	}
 
 	@Override

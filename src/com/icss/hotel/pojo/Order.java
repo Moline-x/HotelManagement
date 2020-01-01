@@ -12,7 +12,7 @@ public class Order {
 	//房间类型
 	private String tname;
 	//房间编号
-	private String rno;
+	private Integer rno;
 	//入住时间
 	private String startTime;
 	//退房时间
@@ -24,7 +24,7 @@ public class Order {
 		super();
 	}
 
-	public Order(Integer ono, String cname, String tname, String rno, String startTime, String endTime,
+	public Order(Integer ono, String cname, String tname, Integer rno, String startTime, String endTime,
 			Integer ostate) {
 		super();
 		this.ono = ono;
@@ -60,11 +60,11 @@ public class Order {
 		this.tname = tname;
 	}
 
-	public String getRno() {
+	public Integer getRno() {
 		return rno;
 	}
 
-	public void setRno(String rno) {
+	public void setRno(Integer rno) {
 		this.rno = rno;
 	}
 

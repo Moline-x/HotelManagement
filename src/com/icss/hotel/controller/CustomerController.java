@@ -32,6 +32,7 @@ public class CustomerController {
 	@RequestMapping("/addCustomer")
 	@ResponseBody
 	public Object addCustomer(Customer c) {
+		System.out.println("s"+c);
 		int i = service.addCustomer(c);
 		if(i > 0) {
 			return "success";

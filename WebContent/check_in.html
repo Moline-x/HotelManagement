@@ -57,7 +57,7 @@
                         <h3 class="panel-title">入住列表</h3>
                     </div>
                     <div class="dataTables_length" id="datatable_length">
-                        <button class="btn btn-primary m-t-20" id="btnAddOrder" data-toggle="modal" data-target = "#addmodal"> <!-- <i class="fa"></i> --> 添加订单</button>
+                        <button class="btn btn-primary m-t-20" id="btnAddOrder" data-toggle="modal" data-target = "#addmodal"> <!-- <i class="fa"></i> --> 客人入住</button>
                     </div>
                     <!--<div class="dataTables_length" id="datatable_length">
                         <label>Show <select name="datatable_length" aria-controls="datatable"
@@ -131,6 +131,24 @@
 								<label for="cname" class="col-sm-3 control-label">顾客姓名</label>
 								<div class="col-sm-7">
 									<input type="text" class="form-control" id="cname" placeholder="顾客姓名">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">性别</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cgender" placeholder="性别">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">身份证号</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cidcard" placeholder="身份证号">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">手机号码</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cphone" placeholder="手机号码">
 								</div>
 							</div>
 							<div class="form-group">
@@ -382,7 +400,7 @@ $("#addbtn").click(function(){
 	$.ajax({
 		type:"get",
 		url:"addOrder",
-		data:{"cname":$("#cname").val(),"tno":option.val(),"rno":roomOption.val(),"startTime":$("#startTime").val(),"endTime":$("#endTime").val(),"ostate":$("input[name='ostate']:checked").val()},
+		data:{"cname":$("#cname").val(),"cgender":$("#cgender").val(),"cidcard":$("#cidcard").val(),"cphone":$("#cphone").val(),"tno":option.val(),"rno":roomOption.val(),"startTime":$("#startTime").val(),"endTime":$("#endTime").val(),"ostate":1},
 		dataType:"text",
 		success:function(data){
 			if(data == "success"){

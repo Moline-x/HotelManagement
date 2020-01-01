@@ -32,6 +32,16 @@ public class Customer {
 		this.integral = integral;
 	}
 
+	
+
+	public Customer(String cname, String gender, String idcard, String phone) {
+		super();
+		this.cname = cname;
+		this.gender = gender;
+		this.idcard = idcard;
+		this.phone = phone;
+	}
+
 	public Integer getCno() {
 		return cno;
 	}
