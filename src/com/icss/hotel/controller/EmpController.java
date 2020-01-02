@@ -82,7 +82,7 @@ public class EmpController {
 		return emp;
 	}
 	
-	//更新个人信息
+	//更新个人信息 
 		@RequestMapping("/updateEmpById")
 		@ResponseBody
 		public Object updateEmpById(String empno,String ename,String gender,String birth,String phone) {
@@ -98,7 +98,22 @@ public class EmpController {
 				return "fail";
 			}
 		}
-	
+	//更新个人密码信息 
+		@RequestMapping("/updateEmpPassword")
+		@ResponseBody
+		public Object updateEmpPassword(String empno,String password) {
+
+			Integer empno2 = Integer.parseInt(empno);
+			Emp e = new Emp(empno2,password);
+			System.out.println(e+"a");
+			int i = service.updateEmpPassword(e);
+			System.out.println(i);
+			if(i > 0) {
+				return "success";
+			}else {
+				return "fail";
+			}
+		}
 
 
 }
