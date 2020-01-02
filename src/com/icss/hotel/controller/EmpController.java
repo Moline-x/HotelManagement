@@ -17,7 +17,6 @@ import com.icss.hotel.service.EmpService;
 import com.icss.hotel.service.RoomService;
 import com.icss.hotel.service.TypeService;
 
-
 /**
  * 请求转发
  * @author Moline-x
@@ -33,8 +32,6 @@ public class EmpController {
 	@Autowired
 	RoomService rservice;
 	
-	
-	
 	//登录
 	@RequestMapping("/login")
 	@ResponseBody
@@ -49,7 +46,6 @@ public class EmpController {
 		}else {
 			map.put("state","fail");
 		}
-		
 		
 		return map;
 	}
@@ -74,6 +70,7 @@ public class EmpController {
 			return "fail";
 		}
 	}
+
 	
 	//查询所有员工信息
 	@RequestMapping("/selectByEmpno")
@@ -85,7 +82,7 @@ public class EmpController {
 		return emp;
 	}
 	
-	//更新个人信息
+	//更新个人信息 
 		@RequestMapping("/updateEmpById")
 		@ResponseBody
 		public Object updateEmpById(String empno,String ename,String gender,String birth,String phone) {
@@ -101,6 +98,22 @@ public class EmpController {
 				return "fail";
 			}
 		}
-	
+	//更新个人密码信息 
+		@RequestMapping("/updateEmpPassword")
+		@ResponseBody
+		public Object updateEmpPassword(String empno,String password) {
+
+			Integer empno2 = Integer.parseInt(empno);
+			Emp e = new Emp(empno2,password);
+			System.out.println(e+"a");
+			int i = service.updateEmpPassword(e);
+			System.out.println(i);
+			if(i > 0) {
+				return "success";
+			}else {
+				return "fail";
+			}
+		}
+
 
 }

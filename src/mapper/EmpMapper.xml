@@ -17,4 +17,7 @@
 	<update id="updateEmpById" parameterType="emp">
 		update tb_emp set ename = #{ename},gender = #{gender},birth = #{birth},phone = #{phone} where empno = #{empno}
 	</update>
+	<update id="updateEmpPassword" parameterType="emp">
+		update tb_emp set password = #{password} where empno = #{empno}
+	</update>
 </mapper>

@@ -21,4 +21,8 @@ public interface EmpDao {
 	Emp selectByEmpno(@Param("empno")Integer empno);
 
 	int updateEmpById(Emp e);
+	
+	int updateEmpPassword(Emp e);
+	
+	
 }

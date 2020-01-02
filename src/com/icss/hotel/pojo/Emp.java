@@ -61,6 +61,13 @@ public class Emp {
 		this.state = state;
 		this.roleid = roleid;
 	}
+	
+	
+	public Emp(Integer empno,String password){
+		super();
+		this.empno = empno;
+		this.password = password;
+	}
 
 	public Integer getEmpno() {
 		return empno;
