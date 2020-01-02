@@ -48,5 +48,11 @@ public class EmpServiceImpl implements EmpService{
 	public int updateEmpPassword(Emp e){
 		 return dao.updateEmpPassword(e);
 	}
+
+	@Override
+	public int updateEmp(Emp e) {
+		// TODO Auto-generated method stub
+		return dao.updateEmp(e);
+	}
 	
 }

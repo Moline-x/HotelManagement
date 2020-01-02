@@ -99,6 +99,7 @@
                                         <th>电话</th>
                                         <th>状态</th>
                                         <th>角色</th>
+                                        <th>操作</th>
                                     </tr>
                                     </thead>
                                     <tbody id="emplist">
@@ -111,6 +112,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" id="hempno">
     </div>
 </section>
 <!-- 增加模态框 -->
@@ -186,6 +188,37 @@
 			</div>
 		</div>
 <!-- 增加模态框 -->
+<!-- 修改模态框 -->
+<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="state" class="col-sm-3 control-label">状态</label>
+								<div class="col-sm-7">
+									<input type="radio"  name="upstate" id="upin" value="0" checked>在职
+									<input type="radio"  name="upstate" id="upout" value="1">离职
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="roleid" class="col-sm-3 control-label">角色</label>
+								<div class="col-sm-7">
+									<input type="radio"  name="uproleid" id="upno" value="0" checked>普通员工
+									<input type="radio"  name="uproleid" id="upco" value="1">管理员
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="upbtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 修改模态框 -->
 
 <script src="js/jquery.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -273,7 +306,9 @@
         				x += "普通员工";
         				x += "</td>";
     				}
-    				
+    				x += "<td>";
+    				x += '<a class="btn btn-primary m-t-20"  id="btnUpEmp" onclick="update('+e.roleid+','+e.empno+','+e.state+')"><i class="fa"></i> 编辑</a>';
+    				x += "</td>";
     				x += "</tr>";
     				
     				$("#emplist").append(x);
@@ -301,6 +336,44 @@
     		}
     	})
     })
+    
+    function update(roleid,empno,state){
+    	$("#hempno").val(empno);
+    	if(roleid == 1){
+    		$("#upco").attr("checked",true);
+    	}else if(roleid == 0){
+    		$("#upno").attr("checked",true);
+    	}
+    	
+    	if(state == 0){
+    		$("#upin").attr("checked",true);
+    	}else if(state == 1){
+    		$("#upout").attr("checked",true);
+    	}
+    	
+    	
+    	$("#updatemodal").modal();
+    }
+    //编辑员工信息
+    $("#upbtn").click(function(){
+	 $.ajax({
+		 type:"get",
+		 url:"updateEmp",
+		 data:{"empno":$("#hempno").val(),"state":$("input[name=upstate]:checked").val(),"roleid":$("input[name=uproleid]:checked").val()},
+		 dataType:"text",
+		 success:function(data){
+			 if(data == "success"){
+				 init();
+				 //隐藏更新的模态框
+				 $("#updatemodal").modal("hide");
+			 }else{
+				 alert("更新失败");
+			 }
+		 },error:function(){
+			 alert("error");
+		 }
+	 })
+ })
 </script>
 
 </body>
