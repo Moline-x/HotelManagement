@@ -44,5 +44,17 @@ public class OrderController {
 			return "false";
 		}
 	}
+	
+	//É¾³ı¿Í·¿
+		@RequestMapping("/deleteOrderById")
+		@ResponseBody
+		public Object deleteOrderById(String ono) {
+			int i = service.deleteOrderById(ono);
+			if(i > 0) {
+				return "success";
+			}else {
+				return "fail";
+			}
+		}
 
 }

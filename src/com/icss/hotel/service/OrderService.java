@@ -10,4 +10,6 @@ public interface OrderService {
 
 	List<Order> selectAllOrder();
 
+	int deleteOrderById(String ono);
+
 }

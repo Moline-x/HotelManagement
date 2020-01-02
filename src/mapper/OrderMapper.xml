@@ -7,4 +7,7 @@
 	<insert id="addOrder">
 		insert into tb_order(cno,rno,startTime,endTime,ostate) values((select cno from tb_customer where idcard = #{cidcard}),#{rno},#{startTime},#{endTime},#{ostate})
 	</insert>
+	<delete id="deleteOrderById" parameterType="String">
+		delete from tb_order where ono = #{ono}
+	</delete>
 </mapper>

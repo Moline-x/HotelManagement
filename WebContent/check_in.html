@@ -170,29 +170,23 @@
 							<div class="form-group">
 								<label for="startTime" class="col-sm-3 control-label">入住时间</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="startTime" placeholder="入住时间">
+									<input type="date" class="form-control" id="startTime" placeholder="入住时间">
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="endTime" class="col-sm-3 control-label">退房时间</label>
 								<div class="col-sm-7">
-									<input type="text" class="form-control" id="endTime" placeholder="退房时间">
+									<input type="date" class="form-control" id="endTime" placeholder="退房时间">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="ostate" class="col-sm-3 control-label">状态</label>
-								<div class="col-sm-7">
-									<input type="radio"  name="rstate" value="1" checked>入住
-									<input type="radio"  name="rstate" value="0">退房
-								</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+								<button type="button" class="btn btn-primary" id="addbtn">提交</button>
 							</div>
 							
 						</form>
 					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-						<button type="button" class="btn btn-primary" id="addbtn">提交</button>
-					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -245,13 +239,7 @@
 									<input type="text" class="form-control" id="upendTime" placeholder="退房时间">
 								</div>
 							</div>
-							<div class="form-group">
-								<label for="upostate" class="col-sm-3 control-label">状态</label>
-								<div class="col-sm-7">
-									<input type="radio" id="upcheckin" name="uprstate" value="1" checked>入住
-									<input type="radio"  id="upcheckout" name="uprstate" value="0">退房
-								</div>
-							</div>
+							
 							
 						</form>
 					</div>
@@ -342,7 +330,7 @@ function init(){
 				x += '<a class="btn btn-primary m-t-20"  id="btnAddOrder" onclick="update('+o.ono+',\''+o.cname+'\','+o.tname+',\''+o.rno+'\',\''+o.startTime+'\',\''+o.endTime+'\',\''+o.ostate+'\')"><i class="fa"></i> 编辑</a>';
 				x += "</td>";
 				x += "<td>";
-				x += '<a class="btn btn-primary m-t-20"  onclick="del('+o.ono+')" id="btnAddOrder" ><i class="fa"></i> 删除</a>';
+				x += '<a class="btn btn-primary m-t-20"  onclick="del('+o.ono+')" id="btnDelOrder" ><i class="fa"></i> 删除</a>';
 				x += "</td>";
 				
 				

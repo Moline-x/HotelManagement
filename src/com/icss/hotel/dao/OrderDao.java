@@ -12,4 +12,6 @@ public interface OrderDao {
 
 	List<Order> selectAllOrder();
 
+	int deleteOrderById(@Param("ono")String ono);
+
 }
