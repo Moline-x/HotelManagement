@@ -114,6 +114,23 @@ public class EmpController {
 				return "fail";
 			}
 		}
+	//修改员工信息
+		@RequestMapping("/updateEmp")
+		@ResponseBody
+		public Object updateEmp(String empno, String state, String roleid) {
 
-
+			Integer empno2 = Integer.parseInt(empno);
+			Integer state1 = Integer.parseInt(state);
+			Integer roleid1 = Integer.parseInt(roleid);
+			
+			Emp e = new Emp(empno2,state1,roleid1);
+			System.out.println(e+"a");
+			int i = service.updateEmp(e);
+			System.out.println(i);
+			if(i > 0) {
+				return "success";
+			}else {
+				return "fail";
+			}
+		}
 }

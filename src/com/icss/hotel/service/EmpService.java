@@ -26,6 +26,7 @@ public interface EmpService {
 	int updateEmpById(Emp e);
 
 	int updateEmpPassword(Emp e);
-
+	
+	int updateEmp(Emp e);
 	
 }

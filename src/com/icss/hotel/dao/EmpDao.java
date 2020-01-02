@@ -24,5 +24,7 @@ public interface EmpDao {
 	
 	int updateEmpPassword(Emp e);
 	
+	int updateEmp(Emp e);
+	
 	
 }

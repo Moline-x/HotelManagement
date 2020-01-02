@@ -68,6 +68,14 @@ public class Emp {
 		this.empno = empno;
 		this.password = password;
 	}
+	
+	public Emp(Integer empno,Integer state,Integer roleid)
+	{
+		super();
+		this.empno = empno;
+		this.state = state;
+		this.roleid = roleid;
+	}
 
 	public Integer getEmpno() {
 		return empno;

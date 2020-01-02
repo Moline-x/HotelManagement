@@ -20,4 +20,11 @@
 	<update id="updateEmpPassword" parameterType="emp">
 		update tb_emp set password = #{password} where empno = #{empno}
 	</update>
+	<update id="updateEmp" parameterType="emp">
+		update tb_emp set state = #{state},roleid = #{roleid} where empno = #{empno}
+	</update>
+	
+	
+	
+	
 </mapper>
