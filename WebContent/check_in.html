@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-for="http://www.w3.org/1999/xhtml">
+
+<!-- Mirrored from coderthemes.com/velonic_3.0/admin_3/table-datatable.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 29 May 2016 14:53:05 GMT -->
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="shortcut icon" href="img/favicon_1.ico">
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap-reset.css" rel="stylesheet">
+
+    <!--Animation css-->
+    <link href="css/animate.css" rel="stylesheet">
+
+    <!--Icon-fonts css-->
+    <link href="assets/font-awesome/css/font-awesome.css" rel="stylesheet"/>
+    <link href="assets/ionicon/css/ionicons.min.css" rel="stylesheet"/>
+
+    <!-- DataTables -->
+    <link href="assets/datatables/jquery.dataTables.min.css" rel="stylesheet" type="text/css"/>
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+    <link href="css/helper.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 tooltipss and media queries -->
+    <!--[if lt IE 9]>
+    <script src="js/html5shiv.js"></script>
+    <script src="js/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        div.row table thead tr th {
+            text-align: center;
+        }
+
+        div.row table tbody tr td {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<section>
+    <div class="wraper container-fluid">
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">入住列表</h3>
+                    </div>
+                    <div class="dataTables_length" id="datatable_length">
+                        <button class="btn btn-primary m-t-20" id="btnAddOrder" data-toggle="modal" data-target = "#addmodal"> <!-- <i class="fa"></i> --> 客人入住</button>
+                    </div>
+                    <!--<div class="dataTables_length" id="datatable_length">
+                        <label>Show <select name="datatable_length" aria-controls="datatable"
+                                            class="form-control input-sm">
+                            <option value="10">10</option>
+                            <option value="25">25</option>
+                            <option value="50">50</option>
+                            <option value="100">100</option>
+                        </select> entries</label>
+                    </div> -->
+                    <div class="panel-body">
+                        <div class="row">
+                        	<div class="col-md-2 col-sm-2 col-xs-2">
+                        	
+                        	</div>
+                        	
+                            <div class="col-md-8 col-sm-8 col-xs-8">
+                                <table id="datatable" class="table table-striped">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <label class="cr-styled">
+                                                <input type="checkbox">
+                                                <i class="fa"></i>
+
+                                            </label>
+                                        </th>
+                                        <th>订单编号</th>
+                                        <th>顾客姓名</th>
+                                        <th>客房类型</th>
+                                        <th>客房编号</th>
+                                        <th>入住时间</th>
+                                        <th>退房时间</th>
+                                        <th>状态</th>
+                                        <th>操作</th>
+                                        <th>操作</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody id="checkinlist">
+                                    
+                                    </tbody>
+                                </table>
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- End Row -->
+
+    </div>
+
+</section>
+
+<!-- 增加模态框 -->
+
+<div class="modal fade" id="addmodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">订单添加</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">顾客姓名</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cname" placeholder="顾客姓名">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">性别</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cgender" placeholder="性别">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">身份证号</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cidcard" placeholder="身份证号">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="cname" class="col-sm-3 control-label">手机号码</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="cphone" placeholder="手机号码">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="tname" class="col-sm-3 control-label">客房类型：</label>
+								<div class="col-sm-7">
+								<select name = "tname" class = "form-control" id="selectType">
+									
+								</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="rno" class="col-sm-3 control-label">客房编号：</label>
+								<div class="col-sm-7">
+								<select name = "rno" class = "form-control" id="selectRoom">
+									
+								</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="startTime" class="col-sm-3 control-label">入住时间</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="startTime" placeholder="入住时间">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="endTime" class="col-sm-3 control-label">退房时间</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="endTime" placeholder="退房时间">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="ostate" class="col-sm-3 control-label">状态</label>
+								<div class="col-sm-7">
+									<input type="radio"  name="rstate" value="1" checked>入住
+									<input type="radio"  name="rstate" value="0">退房
+								</div>
+							</div>
+							
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="addbtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 增加模态框 -->
+<!-- 修改模态框 -->
+
+<div class="modal fade" id="updatemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+						<h4 class="modal-title" id="myModalLabel">订单修改</h4>
+					</div>
+					<div class="modal-body">
+						<form class="form-horizontal">
+							<input type="hidden" class="form-control" id="upono">
+							<div class="form-group">
+								<label for="upcname" class="col-sm-3 control-label">顾客姓名</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="upcname" placeholder="顾客姓名" readonly="true">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="uptname" class="col-sm-3 control-label">客房类型：</label>
+								<div class="col-sm-7">
+								<select name = "uptname" class = "form-control" id="upselectType">
+									
+								</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="uprno" class="col-sm-3 control-label">客房编号：</label>
+								<div class="col-sm-7">
+								<select name = "uprno" class = "form-control" id="upselectRoom">
+									
+								</select>
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="upstartTime" class="col-sm-3 control-label">入住时间</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="upstartTime" placeholder="入住时间">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="upendTime" class="col-sm-3 control-label">退房时间</label>
+								<div class="col-sm-7">
+									<input type="text" class="form-control" id="upendTime" placeholder="退房时间">
+								</div>
+							</div>
+							<div class="form-group">
+								<label for="upostate" class="col-sm-3 control-label">状态</label>
+								<div class="col-sm-7">
+									<input type="radio" id="upcheckin" name="uprstate" value="1" checked>入住
+									<input type="radio"  id="upcheckout" name="uprstate" value="0">退房
+								</div>
+							</div>
+							
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-primary" id="updatebtn">提交</button>
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- 修改模态框 -->
+<!-- Main Content Ends -->
+
+<!-- js placed at the end of the document so the pages load faster -->
+<script src="js/jquery.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/pace.min.js"></script>
+<script src="js/wow.min.js"></script>
+<script src="js/jquery.nicescroll.js" type="text/javascript"></script>
+
+<script src="js/jquery.app.js"></script>
+
+<script src="assets/datatables/jquery.dataTables.min.js"></script>
+<script src="assets/datatables/dataTables.bootstrap.js"></script>
+
+<script src="js/layer/layer.js"></script>
+<script src="js/vue.min.js"></script>
+<script src="js/vue-resource.min.js"></script>
+<script src="js/axios.min.js"></script>
+<script src="js/common.js"></script>
+
+<script type="text/javascript">
+$(function(){
+		init();
+		addOption();
+		addRoomOption();
+})
+
+function init(){
+		$("#checkinlist").html("");
+		$.ajax({
+		type:"get",
+		url:"selectAllOrder",
+		dataType:"json",
+		success:function(data){
+			console.log(data);
+			$.each(data,function(index,o){
+				var x = "<tr>";
+				
+				x += "<td>";
+				x += "";
+				x += "</td>";
+				
+				x += "<td>";
+				x += o.ono;
+				x += "</td>";
+				
+				x += "<td>";
+				x += o.cname;
+				x += "</td>";
+				
+				x += "<td>";
+				x += o.tname;
+				x += "</td>";
+				
+				x += "<td>";
+				x += o.rno;
+				x += "</td>";
+				
+				x += "<td>";
+				x += o.startTime;
+				x += "</td>";
+				
+				x += "<td>";
+				x += o.endTime;
+				x += "</td>";
+				
+				x += "<td>";
+				
+				if(o.ostate == 1){
+					x += "入住";
+				}else if(o.ostate == 0){
+					x += "退房";
+				}
+				x += "</td>";
+				
+				x += "<td>";
+				x += '<a class="btn btn-primary m-t-20"  id="btnAddOrder" onclick="update('+o.ono+',\''+o.cname+'\','+o.tname+',\''+o.rno+'\',\''+o.startTime+'\',\''+o.endTime+'\',\''+o.ostate+'\')"><i class="fa"></i> 编辑</a>';
+				x += "</td>";
+				x += "<td>";
+				x += '<a class="btn btn-primary m-t-20"  onclick="del('+o.ono+')" id="btnAddOrder" ><i class="fa"></i> 删除</a>';
+				x += "</td>";
+				
+				
+				
+				
+				x += "</tr>";
+				
+				$("#checkinlist").append(x);
+			})
+		},error:function(){
+			alert("error");
+		}
+		})
+	}
+	
+	function addOption(){
+		$.ajax({
+			type:"get",
+			url:"selectAllType",
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+				$.each(data,function(index,t){
+					　$("#selectType").append("<option value="+t.tno+">"+t.tname+"</option>");
+					
+				})
+			},error:function(){
+				alert("error");
+			}
+			})
+	}
+	
+	function addRoomOption(){
+		$.ajax({
+			type:"get",
+			url:"selectAllRoom",
+			dataType:"json",
+			success:function(data){
+				console.log(data);
+				$.each(data,function(index,r){
+					　$("#selectRoom").append("<option value="+r.rno+">"+r.rno+"</option>");
+					
+				})
+			},error:function(){
+				alert("error");
+			}
+			})
+	}
+	
+
+//增加客房信息
+$("#addbtn").click(function(){
+	var option = $("#selectType option:selected");
+	var roomOption = $("#selectRoom option:selected");
+	$.ajax({
+		type:"get",
+		url:"addOrder",
+		data:{"cname":$("#cname").val(),"cgender":$("#cgender").val(),"cidcard":$("#cidcard").val(),"cphone":$("#cphone").val(),"tno":option.val(),"rno":roomOption.val(),"startTime":$("#startTime").val(),"endTime":$("#endTime").val(),"ostate":1},
+		dataType:"text",
+		success:function(data){
+			if(data == "success"){
+				init();
+				$("#addmodal").modal("hide");
+				
+			}
+		},error:function(){
+			alert("error");
+		}
+	})
+})
+
+//$("#addmodal").on("hidden.bs.modal",function(){
+//	$("#selectType").html("");
+//})
+
+$("#updatemodal").on("hidden.bs.modal",function(){
+	$("#upselectType").html("");
+})
+
+
+//删除客房信息
+function del(ono){
+	$.ajax({
+		type:"get",
+		url:"deleteOrderById",
+		data:{"ono":ono},
+		dataType:"text",
+		success:function(data){
+			console.log('hh'+data);
+			if(data == "success"){
+				init();
+			}else{
+				alert("删除失败");
+			}
+		},error:function(){
+			alert("error");
+		}
+	})
+}
+
+//更新客房信息
+function update(ono,cname,tname,rno,startTime,endTime,ostate){
+	$("#upcname").val(cname);
+	$("#upstartTime").val(startTime);
+	$("#upendTime").val(endTime);
+	if(ostate == 0){
+		$("#upcheckout").attr("checked",true);
+	}else if(ostate == 1){
+		$("#upcheckin").attr("checked",true);
+	}
+	selectUpName(tname);	
+	selectUpRno(rno);
+	$("#updatemodal").modal();
+}
+
+function selectUpName(tname){
+	$.ajax({
+		type:"get",
+		url:"selectAllType",
+		dataType:"json",
+		success:function(data){
+			$.each(data,function(index,t){
+				var x = "";
+				if(t.tname == tname){
+					x = '<option value='+t.tno+' selected>';
+				}else{
+					x = '<option value='+t.tno+'>';
+				}
+				
+				x += t.tname;
+				x += '</option>';
+				
+				$("#upselectType").append(x);
+			})
+		}
+	})
+}
+
+function selectUpRno(rno){
+	$.ajax({
+		type:"get",
+		url:"selectAllRoom",
+		dataType:"json",
+		success:function(data){
+			$.each(data,function(index,r){
+				var x = "";
+				if(r.rno == rno){
+					x = '<option value='+r.rno+' selected>';
+				}else{
+					x = '<option value='+r.rno+'>';
+				}
+				
+				x += r.rno;
+				x += '</option>';
+				
+				$("#upselectRoom").append(x);
+			})
+		}
+	})
+}
+
+//更新操作
+$("#updatebtn").click(function(){
+	$.ajax({
+		type:"get",
+		url:"updateOrderById",
+		data:{"ono":$("#upono"),"cname":$("#upcname"),"tno":$("#upselectType").val(),"rno":$("#upselectRoom"),"startTime":$("#upstartTime").val(),"endTime":$("#upendTime").val(),"ostate":$("input[name=upostate]:checked").val()},
+		dataType:"text",
+		success:function(data){
+			if(data == "success"){
+				init();
+				$("#updatemodal").modal("hide");
+			}
+		},error:function(){
+			alert("error");
+		}
+	})
+})
+</script>
+
+</body>
+
+
+</html>
