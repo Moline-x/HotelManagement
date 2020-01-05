@@ -16,4 +16,7 @@
 	<update id="updateRoomById" parameterType="room">
 		update tb_room set tno=#{tno},rstate=#{rstate},remark=#{remark} where rno=#{rno}
 	</update>
+	<update id="updateState" parameterType="room">
+		update tb_room set rstate= 1 where rno=#{rno}
+	</update>
 </mapper>

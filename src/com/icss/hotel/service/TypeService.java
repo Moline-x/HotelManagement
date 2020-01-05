@@ -14,4 +14,6 @@ public interface TypeService  {
 
 	int updateTypeById(Type t);
 
+	void reduceRoom(Integer tno);
+
 }

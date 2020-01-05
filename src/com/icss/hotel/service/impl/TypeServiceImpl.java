@@ -34,5 +34,10 @@ public class TypeServiceImpl implements TypeService {
 		// TODO Auto-generated method stub
 		return dao.updateTypeById(t);
 	}
+	@Override
+	public void reduceRoom(Integer tno) {
+		// TODO Auto-generated method stub
+		dao.reduceRoom(tno);
+	}
 
 }

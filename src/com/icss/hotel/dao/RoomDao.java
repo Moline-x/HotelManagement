@@ -16,4 +16,6 @@ public interface RoomDao {
 
 	int updateRoomById(Room r);
 
+	void updateState(@Param("rno")Integer rno);
+
 }

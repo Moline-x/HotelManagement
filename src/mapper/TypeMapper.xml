@@ -13,4 +13,7 @@
 	<update id="updateTypeById" parameterType="type">
 		update tb_type set tname = #{tname},price = #{price},totalNum = #{totalNum},RestNum = #{RestNum} where tno = #{tno}
 	</update>
+	<update id="reduceRoom" parameterType="type">
+		update tb_type set RestNum=RestNum - 1 where tno = #{tno}
+	</update>
 </mapper>

@@ -11,6 +11,8 @@ import com.icss.hotel.pojo.Customer;
 import com.icss.hotel.pojo.Order;
 import com.icss.hotel.service.CustomerService;
 import com.icss.hotel.service.OrderService;
+import com.icss.hotel.service.RoomService;
+import com.icss.hotel.service.TypeService;
 
 @Controller
 public class OrderController {
@@ -19,6 +21,10 @@ public class OrderController {
 	OrderService service;
 	@Autowired
 	CustomerService cservice;
+	@Autowired
+	TypeService tservice;
+	@Autowired
+	RoomService rservice;
 	
 	//查看所有订单信息
 	@RequestMapping("/selectAllOrder")
@@ -39,6 +45,8 @@ public class OrderController {
 		cservice.addCustomer(c);
 		int i = service.addOrder(cidcard,tno,rno,startTime,endTime,ostate);
 		if(i > 0) {
+			tservice.reduceRoom(tno);
+			rservice.updateState(rno);
 			return "success";
 		}else {
 			return "false";

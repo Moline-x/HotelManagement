@@ -35,5 +35,10 @@ public class RoomServiceImpl implements RoomService{
 		// TODO Auto-generated method stub
 		return dao.updateRoomById(r);
 	}
+	@Override
+	public void updateState(Integer rno) {
+		// TODO Auto-generated method stub
+		dao.updateState(rno);
+	}
 
 }
