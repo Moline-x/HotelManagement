@@ -54,5 +54,12 @@ public class EmpServiceImpl implements EmpService{
 		// TODO Auto-generated method stub
 		return dao.updateEmp(e);
 	}
+
+	@Override
+	public Emp checkPwd(String password) {
+		// TODO Auto-generated method stub
+		Emp emp = dao.checkPwd(password);
+		return emp;
+	}
 	
 }

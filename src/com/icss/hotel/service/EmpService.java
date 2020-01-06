@@ -28,5 +28,7 @@ public interface EmpService {
 	int updateEmpPassword(Emp e);
 	
 	int updateEmp(Emp e);
+
+	Emp checkPwd(String password);
 	
 }

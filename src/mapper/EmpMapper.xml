@@ -5,6 +5,9 @@
 	<select id="login" parameterType="String" resultType="emp">
 		SELECT *FROM tb_emp WHERE account = #{account} AND password = #{password}
 	</select>
+	<select id="checkPwd" parameterType="String" resultType="emp">
+		select * from tb_emp where password = #{password}
+	</select>
 	<select id="selectAllEmp" resultType="emp">
 		select * from tb_emp
 	</select>	

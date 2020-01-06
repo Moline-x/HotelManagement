@@ -50,6 +50,24 @@ public class EmpController {
 		return map;
 	}
 	
+	//检查密码
+	@RequestMapping("/checkPwd")
+	@ResponseBody
+	public Object checkPwd(String password) {
+		//逻辑处理 service
+		Emp e = service.checkPwd(password);
+		
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("emp", e);
+		if(e != null){
+			map.put("state","success");
+		}else {
+			map.put("state","fail");
+		}
+		
+		return map;
+	}
+	
 	//查询所有员工信息
 	@RequestMapping("/selectAllEmp")
 	@ResponseBody
